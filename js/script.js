@@ -33,10 +33,21 @@ function operate(firstNumber, secondNumber, operator) {
     return result;
 }
 
-
+const display = document.querySelector(".display");
 const buttons = document.querySelectorAll(".buttons button");
+let displayedNumber = "";
 
 buttons.forEach(button => {
     button.addEventListener("mousedown", function () { this.classList.add("button-active") });
     button.addEventListener("mouseup", function () { this.classList.remove("button-active") });
+});
+
+const btnNumbers = document.querySelectorAll(".btn-numbers button");
+btnNumbers.forEach(button => {
+    button.addEventListener("click", function () {
+        if (displayedNumber.length < 8) {
+            displayedNumber += this.textContent;
+            display.textContent = displayedNumber;
+        }
+    })
 })

@@ -34,7 +34,7 @@ body {
     border: 2px solid #F4BB44;
 }
 
-.result>p {
+.display {
     margin: 0;
     font-family: 'Orbitron', 'Courier', sans-serif;
     font-size: 32px;
