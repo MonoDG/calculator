@@ -1,0 +1,17 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F9F6EE;
+}
+
+.calc-container {
+    width: 500px;
+    height: 100vh;
+    margin: 0 auto;
+    background-color: #28282B;
+    box-shadow: 10px 0px 10px gray;
+}
