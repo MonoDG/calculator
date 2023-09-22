@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron&display=swap');
+
 * {
     box-sizing: border-box;
 }
@@ -9,9 +11,31 @@ body {
 }
 
 .calc-container {
-    width: 500px;
-    height: 100vh;
-    margin: 0 auto;
+    display: flex;
+    min-width: 300px;
+    max-width: 390px;
+    width: 20vw;
+    height: 80vh;
+    margin: 50px auto;
     background-color: #28282B;
     box-shadow: 10px 0px 10px gray;
+}
+
+.result {
+    display: flex;
+    flex: 1;
+    justify-content: end;
+    align-items: end;
+    margin: 20px;
+    height: 8vh;
+    background-color: #F0E68C;
+    border: 2px solid #F4BB44;
+}
+
+.result>p {
+    margin: 0;
+    font-family: 'Orbitron', 'Courier', sans-serif;
+    font-size: 32px;
+    letter-spacing: 0.3ch;
+    text-align: center;
 }
