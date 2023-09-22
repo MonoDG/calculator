@@ -12,13 +12,15 @@ body {
 
 .calc-container {
     display: flex;
+    flex-direction: column;
     min-width: 300px;
-    max-width: 390px;
-    width: 20vw;
-    height: 80vh;
-    margin: 50px auto;
+    max-width: 400px;
+    width: 400px;
+    height: 550px;
+    margin: 130px auto;
     background-color: #28282B;
     box-shadow: 10px 0px 10px gray;
+    border: 10px solid black;
 }
 
 .result {
@@ -38,4 +40,46 @@ body {
     font-size: 32px;
     letter-spacing: 0.3ch;
     text-align: center;
+}
+
+.buttons {
+    display: flex;
+    flex: 7;
+    padding: 10px;
+}
+
+.btn-numbers {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex: 7;
+    gap: 0 7px;
+    margin-right: 10px;
+}
+
+.btn-operations {
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+    gap: 20px 0;
+}
+
+.buttons button {
+    background-color: #36454F;
+    border: none;
+    box-shadow: 5px 1px 1px black;
+    border: 2px solid black;
+    font-family: 'Orbitron', 'Courier', sans-serif;
+    font-size: 32px;
+    color: #F9F6EE;
+}
+
+.buttons button.button-active {
+    box-shadow: 1px 1px 1px black;
+}
+
+.btn-numbers button {
+    width: 75px;
+    height: 75px;
 }

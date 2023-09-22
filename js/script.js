@@ -32,3 +32,11 @@ function operate(firstNumber, secondNumber, operator) {
     }
     return result;
 }
+
+
+const buttons = document.querySelectorAll(".buttons button");
+
+buttons.forEach(button => {
+    button.addEventListener("mousedown", function () { this.classList.add("button-active") });
+    button.addEventListener("mouseup", function () { this.classList.remove("button-active") });
+})
