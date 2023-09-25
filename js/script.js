@@ -35,7 +35,7 @@ function operate(firstNumber, secondNumber, operator) {
 
 const display = document.querySelector(".display");
 const buttons = document.querySelectorAll(".buttons button");
-let displayedNumber = "";
+let displayedNumber = "0";
 
 buttons.forEach(button => {
     button.addEventListener("mousedown", function () { this.classList.add("button-active") });
@@ -45,8 +45,12 @@ buttons.forEach(button => {
 const btnNumbers = document.querySelectorAll(".btn-numbers button");
 btnNumbers.forEach(button => {
     button.addEventListener("click", function () {
-        if (displayedNumber.length < 8) {
-            displayedNumber += this.textContent;
+        if (displayedNumber.length < 10) {
+            if (displayedNumber === "0" && this.textContent !== "0") {
+                displayedNumber = this.textContent;
+            } else if (displayedNumber !== "0") {
+                displayedNumber += this.textContent;
+            }
             display.textContent = displayedNumber;
         }
     })
