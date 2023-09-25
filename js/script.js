@@ -20,7 +20,7 @@ function divide(a, b) {
 
 let firstNumber = 0;
 let secondNumber = 0;
-let operator;
+let operator = "";
 
 function operate(firstNumber, secondNumber, operator) {
     let result = null;
@@ -61,5 +61,23 @@ btnClear.addEventListener("click", () => {
     displayedNumber = "0";
     firstNumber = 0;
     secondNumber = 0;
+    operator = "";
     display.textContent = displayedNumber;
+})
+
+const btnAdd = document.querySelector("#add");
+btnAdd.addEventListener("click", function () {
+    if (operator !== "") {
+        secondNumber = parseInt(displayedNumber);
+        firstNumber = operate(firstNumber, secondNumber, operator);
+        displayedNumber = `${firstNumber}`;
+        display.textContent = displayedNumber;
+        operator = "+";
+        displayedNumber = "0";
+        console.log(`${firstNumber} + `)
+    } else {
+        firstNumber = parseInt(displayedNumber);
+        operator = "+";
+        displayedNumber = "0";
+    }
 })
