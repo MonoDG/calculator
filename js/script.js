@@ -18,8 +18,8 @@ function divide(a, b) {
     return a / b;
 }
 
-let firstNumber;
-let secondNumber;
+let firstNumber = 0;
+let secondNumber = 0;
 let operator;
 
 function operate(firstNumber, secondNumber, operator) {
@@ -54,4 +54,12 @@ btnNumbers.forEach(button => {
             display.textContent = displayedNumber;
         }
     })
+});
+
+const btnClear = document.querySelector("#clear");
+btnClear.addEventListener("click", () => {
+    displayedNumber = "0";
+    firstNumber = 0;
+    secondNumber = 0;
+    display.textContent = displayedNumber;
 })
