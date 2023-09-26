@@ -42,6 +42,11 @@ function operate(firstNumber, secondNumber, operator) {
         case "*": result = multiply(firstNumber, secondNumber); break;
         case "/": result = divide(firstNumber, secondNumber); break;
     }
+
+    if (result === "Error Div by 0") {
+        return result;
+    }
+
     let resultStr = result.toString();
     let resultLen = resultStr.length;
     let resultArr = resultStr.split(".");
