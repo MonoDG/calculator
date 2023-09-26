@@ -86,6 +86,7 @@ btnNumbers.forEach(button => button.addEventListener("click", (e) => {
     }
     if (operator === "") {
         firstNumber = parseInt(displayedValue);
+        tempNumber = firstNumber;
     } else {
         secondNumber = parseInt(displayedValue);
         tempNumber = secondNumber;
