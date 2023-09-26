@@ -7,6 +7,7 @@ const btnSubstract = document.querySelector("#substract");
 const btnMultiply = document.querySelector("#multiply");
 const btnDivide = document.querySelector("#divide");
 const btnEqual = document.querySelector("#equal");
+const btnDecimal = document.querySelector("#decimal");
 
 let firstNumber = null;
 let secondNumber = null;
@@ -110,6 +111,8 @@ btnNumbers.forEach(button => button.addEventListener("click", (e) => {
     display.textContent = displayedValue;
 }));
 
+btnDecimal.addEventListener("click", (e) => e.target.disabled = true);
+
 btnClear.addEventListener("click", clearValues);
 
 btnAdd.addEventListener("click", () => {
@@ -120,6 +123,7 @@ btnAdd.addEventListener("click", () => {
     }
     operator = "+";
     displayedValue = "0";
+    btnDecimal.disabled = false;
 });
 
 btnSubstract.addEventListener("click", () => {
@@ -130,6 +134,7 @@ btnSubstract.addEventListener("click", () => {
     }
     operator = "-";
     displayedValue = "0";
+    btnDecimal.disabled = false;
 });
 
 btnMultiply.addEventListener("click", () => {
@@ -140,6 +145,7 @@ btnMultiply.addEventListener("click", () => {
     }
     operator = "*";
     displayedValue = "0";
+    btnDecimal.disabled = false;
 });
 
 btnDivide.addEventListener("click", () => {
@@ -150,6 +156,7 @@ btnDivide.addEventListener("click", () => {
     }
     operator = "/";
     displayedValue = "0";
+    btnDecimal.disabled = false;
 });
 
 btnEqual.addEventListener("click", () => {
@@ -169,4 +176,5 @@ btnEqual.addEventListener("click", () => {
             secondNumber = null;
         }
     }
+    btnDecimal.disabled = false;
 });

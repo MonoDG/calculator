@@ -62,7 +62,7 @@ body {
     display: flex;
     flex-direction: column;
     flex: 3;
-    gap: 20px 0;
+    gap: 10px 0;
 }
 
 .buttons button {
@@ -90,6 +90,10 @@ body {
     color: #28282B;
 }
 
-.decimal {
+.bigger {
     flex: 1;
+}
+
+#decimal:disabled {
+    opacity: 0.2;
 }
