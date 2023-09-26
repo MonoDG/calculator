@@ -18,10 +18,6 @@ function divide(a, b) {
     return a / b;
 }
 
-let firstNumber = 0;
-let secondNumber = 0;
-let operator = "";
-
 function operate(firstNumber, secondNumber, operator) {
     let result = null;
     switch (operator) {
@@ -33,9 +29,24 @@ function operate(firstNumber, secondNumber, operator) {
     return result;
 }
 
+
+let firstNumber = 0;
+let secondNumber = 0;
+let operator = "";
 const display = document.querySelector(".display");
 const buttons = document.querySelectorAll(".buttons button");
-let displayedNumber = "0";
+let displayedValue = "0";
+
+function populateDisplay(e) {
+    if (displayedValue.length < 10) {
+        if (displayedValue === "0") {
+            displayedValue = e.target.textContent;
+        } else {
+            displayedValue += e.target.textContent;
+        }
+        display.textContent = displayedValue;
+    }
+}
 
 buttons.forEach(button => {
     button.addEventListener("mousedown", function () { this.classList.add("button-active") });
@@ -44,16 +55,7 @@ buttons.forEach(button => {
 
 const btnNumbers = document.querySelectorAll(".btn-numbers button");
 btnNumbers.forEach(button => {
-    button.addEventListener("click", function () {
-        if (displayedNumber.length < 10) {
-            if (displayedNumber === "0" && this.textContent !== "0") {
-                displayedNumber = this.textContent;
-            } else if (displayedNumber !== "0") {
-                displayedNumber += this.textContent;
-            }
-            display.textContent = displayedNumber;
-        }
-    })
+    button.addEventListener("click", populateDisplay);
 });
 
 const btnClear = document.querySelector("#clear");
