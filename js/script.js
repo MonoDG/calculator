@@ -48,24 +48,24 @@ function populateDisplay(e) {
     }
 }
 
+function clearValues() {
+    displayedValue = "0";
+    firstNumber = 0;
+    secondNumber = 0;
+    operator = "";
+    display.textContent = displayedValue;
+}
+
 buttons.forEach(button => {
     button.addEventListener("mousedown", function () { this.classList.add("button-active") });
     button.addEventListener("mouseup", function () { this.classList.remove("button-active") });
 });
 
 const btnNumbers = document.querySelectorAll(".btn-numbers button");
-btnNumbers.forEach(button => {
-    button.addEventListener("click", populateDisplay);
-});
+btnNumbers.forEach(button => button.addEventListener("click", populateDisplay));
 
 const btnClear = document.querySelector("#clear");
-btnClear.addEventListener("click", () => {
-    displayedNumber = "0";
-    firstNumber = 0;
-    secondNumber = 0;
-    operator = "";
-    display.textContent = displayedNumber;
-})
+btnClear.addEventListener("click", clearValues);
 
 const btnAdd = document.querySelector("#add");
 btnAdd.addEventListener("click", function () {
