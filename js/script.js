@@ -1,3 +1,18 @@
+const display = document.querySelector(".display");
+const buttons = document.querySelectorAll(".buttons button");
+const btnNumbers = document.querySelectorAll(".btn-numbers button");
+const btnClear = document.querySelector("#clear");
+const btnAdd = document.querySelector("#add");
+const btnSubstract = document.querySelector("#substract");
+const btnMultiply = document.querySelector("#multiply");
+const btnDivide = document.querySelector("#divide");
+const btnEqual = document.querySelector("#equal");
+
+let firstNumber = null;
+let secondNumber = null;
+let operator = "";
+let displayedValue = "0";
+
 function add(a, b) {
     return a + b;
 }
@@ -29,14 +44,6 @@ function operate(firstNumber, secondNumber, operator) {
     return result;
 }
 
-
-let firstNumber = null;
-let secondNumber = null;
-let operator = "";
-const display = document.querySelector(".display");
-const buttons = document.querySelectorAll(".buttons button");
-let displayedValue = "0";
-
 function clearValues() {
     displayedValue = "0";
     firstNumber = null;
@@ -50,7 +57,7 @@ buttons.forEach(button => {
     button.addEventListener("mouseup", function () { this.classList.remove("button-active") });
 });
 
-const btnNumbers = document.querySelectorAll(".btn-numbers button");
+
 btnNumbers.forEach(button => button.addEventListener("click", (e) => {
     if (displayedValue.length < 10) {
         if (displayedValue === "0") {
@@ -67,14 +74,7 @@ btnNumbers.forEach(button => button.addEventListener("click", (e) => {
     }
 }));
 
-const btnClear = document.querySelector("#clear");
 btnClear.addEventListener("click", clearValues);
-
-const btnAdd = document.querySelector("#add");
-const btnSubstract = document.querySelector("#substract");
-const btnMultiply = document.querySelector("#multiply");
-const btnDivide = document.querySelector("#divide");
-const btnEqual = document.querySelector("#equal");
 
 btnAdd.addEventListener("click", () => {
     operator = "+";
