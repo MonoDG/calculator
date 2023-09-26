@@ -89,3 +89,7 @@ body {
     background-color: #E49B0F;
     color: #28282B;
 }
+
+.decimal {
+    flex: 1;
+}

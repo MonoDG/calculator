@@ -93,12 +93,21 @@ btnNumbers.forEach(button => button.addEventListener("click", (e) => {
         display.textContent = displayedValue;
     }
     if (operator === "") {
-        firstNumber = parseInt(displayedValue);
-        tempNumber = firstNumber;
+        if (displayedValue !== ".") {
+            firstNumber = parseFloat(displayedValue);
+            tempNumber = firstNumber;
+        } else {
+            displayedValue = "0.";
+        }
     } else {
-        secondNumber = parseInt(displayedValue);
-        tempNumber = secondNumber;
+        if (displayedValue !== ".") {
+            secondNumber = parseFloat(displayedValue);
+            tempNumber = secondNumber;
+        } else {
+            displayedValue = "0.";
+        }
     }
+    display.textContent = displayedValue;
 }));
 
 btnClear.addEventListener("click", clearValues);
