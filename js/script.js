@@ -118,20 +118,30 @@ btnClear.addEventListener("click", clearValues);
 
 btnBackspace.addEventListener("click", function () {
     if (operator === "") {
-        if (displayedValue.length > 1) {
-            displayedValue = displayedValue.slice(0, -1);
-            firstNumber = parseFloat(displayedValue);
-        } else {
+        if (displayedValue.includes("e")) {
             displayedValue = "0";
             firstNumber = 0;
+        } else {
+            if (displayedValue.length > 1) {
+                displayedValue = displayedValue.slice(0, -1);
+                firstNumber = parseFloat(displayedValue);
+            } else {
+                displayedValue = "0";
+                firstNumber = 0;
+            }
         }
     } else {
-        if (displayedValue.length > 1) {
-            displayedValue = displayedValue.slice(0, -1);
-            secondNumber = parseFloat(displayedValue);
-        } else {
+        if (displayedValue.includes("e")) {
             displayedValue = "0";
             secondNumber = 0;
+        } else {
+            if (displayedValue.length > 1) {
+                displayedValue = displayedValue.slice(0, -1);
+                secondNumber = parseFloat(displayedValue);
+            } else {
+                displayedValue = "0";
+                secondNumber = 0;
+            }
         }
     }
     display.textContent = displayedValue;
