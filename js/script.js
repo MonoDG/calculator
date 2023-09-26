@@ -8,6 +8,7 @@ const btnMultiply = document.querySelector("#multiply");
 const btnDivide = document.querySelector("#divide");
 const btnEqual = document.querySelector("#equal");
 const btnDecimal = document.querySelector("#decimal");
+const btnBackspace = document.querySelector("#backspace");
 
 let firstNumber = null;
 let secondNumber = null;
@@ -114,6 +115,27 @@ btnNumbers.forEach(button => button.addEventListener("click", (e) => {
 btnDecimal.addEventListener("click", (e) => e.target.disabled = true);
 
 btnClear.addEventListener("click", clearValues);
+
+btnBackspace.addEventListener("click", function () {
+    if (operator === "") {
+        if (displayedValue.length > 1) {
+            displayedValue = displayedValue.slice(0, -1);
+            firstNumber = parseFloat(displayedValue);
+        } else {
+            displayedValue = "0";
+            firstNumber = 0;
+        }
+    } else {
+        if (displayedValue.length > 1) {
+            displayedValue = displayedValue.slice(0, -1);
+            secondNumber = parseFloat(displayedValue);
+        } else {
+            displayedValue = "0";
+            secondNumber = 0;
+        }
+    }
+    display.textContent = displayedValue;
+})
 
 btnAdd.addEventListener("click", () => {
     if (secondNumber !== null) {
