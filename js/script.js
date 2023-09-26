@@ -10,6 +10,7 @@ const btnEqual = document.querySelector("#equal");
 
 let firstNumber = null;
 let secondNumber = null;
+let tempNumber = null;
 let operator = "";
 let displayedValue = "0";
 
@@ -71,6 +72,7 @@ btnNumbers.forEach(button => button.addEventListener("click", (e) => {
         firstNumber = parseInt(displayedValue);
     } else {
         secondNumber = parseInt(displayedValue);
+        tempNumber = secondNumber;
     }
 }));
 
@@ -78,6 +80,11 @@ btnClear.addEventListener("click", clearValues);
 
 btnAdd.addEventListener("click", () => {
     operator = "+";
+    if (secondNumber !== null) {
+        firstNumber = operate(firstNumber, secondNumber, operator);
+        secondNumber = null;
+        display.textContent = firstNumber;
+    }
     displayedValue = "0";
 });
 
@@ -98,15 +105,19 @@ btnDivide.addEventListener("click", () => {
 
 btnEqual.addEventListener("click", () => {
     if (operator !== "") {
-        if (secondNumber === null) secondNumber = firstNumber;
-        result = operate(firstNumber, secondNumber, operator);
-        displayedValue = `${result}`;
-        display.textContent = displayedValue;
-        firstNumber = result;
+        if (secondNumber === null) {
+            result = operate(firstNumber, tempNumber, operator);
+            displayedValue = `${result}`;
+            display.textContent = displayedValue;
+            firstNumber = result;
+            secondNumber = null;
+        } else {
+            result = operate(firstNumber, secondNumber, operator);
+            displayedValue = `${result}`;
+            display.textContent = displayedValue;
+            firstNumber = result;
+            tempNumber = secondNumber;
+            secondNumber = null;
+        }
     }
 });
-
-
-// TODO: Point 7. String together several operations and get the right answer,
-// with each pair of numbres being evaluated at a time.
-// For example, 12 + 7 - 5 * 3 = should yield 42.
