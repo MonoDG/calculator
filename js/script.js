@@ -38,14 +38,7 @@ const buttons = document.querySelectorAll(".buttons button");
 let displayedValue = "0";
 
 function populateDisplay(e) {
-    if (displayedValue.length < 10) {
-        if (displayedValue === "0") {
-            displayedValue = e.target.textContent;
-        } else {
-            displayedValue += e.target.textContent;
-        }
-        display.textContent = displayedValue;
-    }
+
 }
 
 function clearValues() {
@@ -62,24 +55,57 @@ buttons.forEach(button => {
 });
 
 const btnNumbers = document.querySelectorAll(".btn-numbers button");
-btnNumbers.forEach(button => button.addEventListener("click", populateDisplay));
+btnNumbers.forEach(button => button.addEventListener("click", (e) => {
+    if (displayedValue.length < 10) {
+        if (displayedValue === "0") {
+            displayedValue = e.target.textContent;
+        } else {
+            displayedValue += e.target.textContent;
+        }
+        display.textContent = displayedValue;
+    }
+    if (operator === "") {
+        firstNumber = parseInt(displayedValue);
+    } else {
+        secondNumber = parseInt(displayedValue);
+    }
+}));
 
 const btnClear = document.querySelector("#clear");
 btnClear.addEventListener("click", clearValues);
 
 const btnAdd = document.querySelector("#add");
-btnAdd.addEventListener("click", function () {
-    if (operator !== "") {
-        secondNumber = parseInt(displayedNumber);
-        firstNumber = operate(firstNumber, secondNumber, operator);
-        displayedNumber = `${firstNumber}`;
-        display.textContent = displayedNumber;
-        operator = "+";
-        displayedNumber = "0";
-        console.log(`${firstNumber} + `)
-    } else {
-        firstNumber = parseInt(displayedNumber);
-        operator = "+";
-        displayedNumber = "0";
-    }
-})
+const btnSubstract = document.querySelector("#substract");
+const btnMultiply = document.querySelector("#multiply");
+const btnDivide = document.querySelector("#divide");
+const btnEqual = document.querySelector("#equal");
+
+btnAdd.addEventListener("click", () => {
+    operator = "+";
+    displayedValue = "0";
+});
+
+btnSubstract.addEventListener("click", () => {
+    firstNumber = parseInt(displayedValue)
+    operator = "-";
+    displayedNumber = "0";
+});
+
+btnMultiply.addEventListener("click", () => {
+    firstNumber = parseInt(displayedValue)
+    operator = "*";
+    displayedNumber = "0";
+});
+
+btnDivide.addEventListener("click", () => {
+    firstNumber = parseInt(displayedValue)
+    operator = "/";
+    displayedNumber = "0";
+});
+
+btnEqual.addEventListener("click", () => {
+    result = operate(firstNumber, secondNumber, operator);
+    displayedValue = `${result}`;
+    display.textContent = displayedValue;
+    firstNumber = result;
+});
