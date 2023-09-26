@@ -42,13 +42,29 @@ function operate(firstNumber, secondNumber, operator) {
         case "*": result = multiply(firstNumber, secondNumber); break;
         case "/": result = divide(firstNumber, secondNumber); break;
     }
-    return result;
+    let resultStr = result.toString();
+    let resultLen = resultStr.length;
+    let resultArr = resultStr.split(".");
+    let resultIntPart = resultArr[0];
+
+
+    if (resultIntPart.length > 10 || resultStr.includes("e") || (resultLen > 10 && resultIntPart === "0")) {
+        return result.toExponential(4);
+    }
+
+    return round(result, 10 - resultIntPart.length);
+}
+
+function round(number, decimals) {
+    const d = Math.pow(10, decimals);
+    return Math.round((number + Number.EPSILON) * d) / d;
 }
 
 function clearValues() {
     displayedValue = "0";
     firstNumber = null;
     secondNumber = null;
+    tempNumber = null;
     operator = "";
     display.textContent = displayedValue;
 }
@@ -79,26 +95,41 @@ btnNumbers.forEach(button => button.addEventListener("click", (e) => {
 btnClear.addEventListener("click", clearValues);
 
 btnAdd.addEventListener("click", () => {
-    operator = "+";
     if (secondNumber !== null) {
         firstNumber = operate(firstNumber, secondNumber, operator);
         secondNumber = null;
         display.textContent = firstNumber;
     }
+    operator = "+";
     displayedValue = "0";
 });
 
 btnSubstract.addEventListener("click", () => {
+    if (secondNumber !== null) {
+        firstNumber = operate(firstNumber, secondNumber, operator);
+        secondNumber = null;
+        display.textContent = firstNumber;
+    }
     operator = "-";
     displayedValue = "0";
 });
 
 btnMultiply.addEventListener("click", () => {
+    if (secondNumber !== null) {
+        firstNumber = operate(firstNumber, secondNumber, operator);
+        secondNumber = null;
+        display.textContent = firstNumber;
+    }
     operator = "*";
     displayedValue = "0";
 });
 
 btnDivide.addEventListener("click", () => {
+    if (secondNumber !== null) {
+        firstNumber = operate(firstNumber, secondNumber, operator);
+        secondNumber = null;
+        display.textContent = firstNumber;
+    }
     operator = "/";
     displayedValue = "0";
 });
