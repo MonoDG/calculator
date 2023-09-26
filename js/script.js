@@ -30,21 +30,17 @@ function operate(firstNumber, secondNumber, operator) {
 }
 
 
-let firstNumber = 0;
-let secondNumber = 0;
+let firstNumber = null;
+let secondNumber = null;
 let operator = "";
 const display = document.querySelector(".display");
 const buttons = document.querySelectorAll(".buttons button");
 let displayedValue = "0";
 
-function populateDisplay(e) {
-
-}
-
 function clearValues() {
     displayedValue = "0";
-    firstNumber = 0;
-    secondNumber = 0;
+    firstNumber = null;
+    secondNumber = null;
     operator = "";
     display.textContent = displayedValue;
 }
@@ -86,26 +82,26 @@ btnAdd.addEventListener("click", () => {
 });
 
 btnSubstract.addEventListener("click", () => {
-    firstNumber = parseInt(displayedValue)
     operator = "-";
-    displayedNumber = "0";
+    displayedValue = "0";
 });
 
 btnMultiply.addEventListener("click", () => {
-    firstNumber = parseInt(displayedValue)
     operator = "*";
-    displayedNumber = "0";
+    displayedValue = "0";
 });
 
 btnDivide.addEventListener("click", () => {
-    firstNumber = parseInt(displayedValue)
     operator = "/";
-    displayedNumber = "0";
+    displayedValue = "0";
 });
 
 btnEqual.addEventListener("click", () => {
-    result = operate(firstNumber, secondNumber, operator);
-    displayedValue = `${result}`;
-    display.textContent = displayedValue;
-    firstNumber = result;
+    if (operator !== "") {
+        if (secondNumber === null) secondNumber = firstNumber;
+        result = operate(firstNumber, secondNumber, operator);
+        displayedValue = `${result}`;
+        display.textContent = displayedValue;
+        firstNumber = result;
+    }
 });
