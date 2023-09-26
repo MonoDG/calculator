@@ -27,7 +27,7 @@ function multiply(a, b) {
 
 function divide(a, b) {
     if (b === 0) {
-        return "Error: Division by 0";
+        return "Error Div by 0";
     }
 
     return a / b;
@@ -105,3 +105,8 @@ btnEqual.addEventListener("click", () => {
         firstNumber = result;
     }
 });
+
+
+// TODO: Point 7. String together several operations and get the right answer,
+// with each pair of numbres being evaluated at a time.
+// For example, 12 + 7 - 5 * 3 = should yield 42.
