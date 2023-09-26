@@ -57,9 +57,9 @@ function operate(firstNumber, secondNumber, operator) {
 
     if (resultIntPart.length > 10 || resultStr.includes("e") || (resultLen > 10 && resultIntPart === "0")) {
         if (resultStr.includes("e")) {
-            return Number(Number(result).toExponential(4));
+            return parseFloat(result).toExponential(4);
         }
-        return Number(result.toExponential(4));
+        return result.toExponential(4);
     }
 
     return round(result, 10 - resultIntPart.length);
